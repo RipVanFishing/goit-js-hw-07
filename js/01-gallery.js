@@ -23,22 +23,24 @@ mainGalleryRef.insertAdjacentHTML('afterbegin', markupGallery);
   </a>
 </div>`;
     }).join("");
-
-    
+   
  }
 
-mainGalleryRef.addEventListener("click", clickOnImageCard);
+const imgRef = mainGalleryRef.addEventListener('click', onGalleryClick)
 
-function clickOnImageCard(event) {
-event.preventDefault();
-    if (!event.target.classList.contains("gallery__link")) {
-        
-        return;
-    }
-     
-    console.log(event.target);
+function onGalleryClick(event) {
+  
+  event.preventDefault();
+  if (!event.target.classList.contains("gallery__image")) {
+    return;
+  }
+
+  console.log(event.target.getAttribute("src"));
+  return;
 }
-
    
 
+const instance = basicLightbox.create(toString(imgRef));
+
+instance.show()
 
